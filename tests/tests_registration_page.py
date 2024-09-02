@@ -7,25 +7,25 @@ from selenium.webdriver.support import expected_conditions
 driver = webdriver.Chrome()
 driver.get('https://stellarburgers.nomoreparties.site/')
 
-account_button = driver.find_element(By.XPATH, "//a[contains(@class, 'AppHeader_header_link_3') and @href='/account']")
+account_button = driver.find_element(By.CSS_SELECTOR, "a[href='/account']")
 account_button.click()
 
-register_link = driver.find_element(By.XPATH, "//a[contains(@class, 'Auth_link_1f0lj') and @href='/register']")
+register_link = driver.find_element(By.CSS_SELECTOR, "a[href='/register']")
 register_link.click()
 
-name = driver.find_element(By.XPATH, "//input[@class='text input__textfield text_typ_main-default' and @name='name']")
-name.send_keys("Дана")
+name = driver.find_element(By.XPATH, "//label[text()='Имя']/following-sibling::input[@type='text']")
+name.send_keys("Дана2")
 
-emaill = driver.find_element(By.XPATH, "//input[@class='text input__textfield text_typ_main-default' and @name='email']")
-emaill.send_keys("feari@mail.com")
+emaill = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
+emaill.send_keys("fairy2@mail.com")
 
-password = driver.find_element(By.XPATH, "//input[@class='text input__textfield text_typ_main-default' and @type='password' and @name='Пароль']")
-password.send_keys("1234567890")
+password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
+password.send_keys("ILoveMinions098")
 
-register_button = driver.find_element(By.XPATH, "//button[contains(@class, 'button_button') and contains(@class, 'button_button_type_primary_107Bx') and contains(@class, 'button_button_size_medium')]")
+register_button = driver.find_element(By.XPATH, "//button[text()='Зарегистрироваться']")
 register_button.click()
 
-login_page_header = WebDriverWait(driver, 3).until(
+login_page_header = WebDriverWait(driver, 10).until(
     expected_conditions.presence_of_element_located((By.XPATH, "//h2[text()='Вход']"))
 )
 
