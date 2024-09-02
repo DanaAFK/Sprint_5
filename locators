@@ -1,0 +1,5 @@
+#Регистрация 
+#Имя: //input[@class='text input_textfield text_type_main-default' and @type='text' and @name='name' and not(@value)]
+#Email: //input[@class='text input_textfield text_type_main-default' and @type='text' and @name='name' and @value='_ Событие']
+#Пароль: //input[@class='text input__textfield text_typ_main-default' and @type='password' and @name='Пароль']
+
