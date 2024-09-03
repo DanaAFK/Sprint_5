@@ -20,22 +20,15 @@ emaill = driver.find_element(By.XPATH, "//label[text()='Email']/following-siblin
 emaill.send_keys("fairy5@mail.com")
 
 password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
-password.send_keys("ILoveMinions098")
+password.send_keys("I")
 
 register_button = driver.find_element(By.XPATH, "//button[text()='Зарегистрироваться']")
 register_button.click()
 
-login_page_header = WebDriverWait(driver, 10).until(
-    expected_conditions.presence_of_element_located((By.XPATH, "//h2[text()='Вход']"))
+error_message = WebDriverWait(driver, 10).until(
+    expected_conditions.presence_of_element_located((By.XPATH, "//p[text()='Некорректный пароль']"))
 )
 
-assert login_page_header.text == "Вход"
+assert error_message.text == "Некорректный пароль"
 
 driver.quit()
-
-
-
-
-
-
-
