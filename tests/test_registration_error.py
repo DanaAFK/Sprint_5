@@ -16,8 +16,8 @@ register_link.click()
 name = driver.find_element(By.XPATH, "//label[text()='Имя']/following-sibling::input[@type='text']")
 name.send_keys("Дана5")
 
-emaill = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
-emaill.send_keys("fairy5@mail.com")
+email = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
+email.send_keys("fairy5@mail.com")
 
 password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
 password.send_keys("I")
