@@ -1,4 +1,3 @@
-import selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -14,10 +13,10 @@ register_link = driver.find_element(By.CSS_SELECTOR, "a[href='/register']")
 register_link.click()
 
 name = driver.find_element(By.XPATH, "//label[text()='Имя']/following-sibling::input[@type='text']")
-name.send_keys("Дана5")
+name.send_keys("Дана98")
 
-emaill = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
-emaill.send_keys("fairy5@mail.com")
+email = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
+email.send_keys("fairy98@mail.com")
 
 password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
 password.send_keys("ILoveMinions098")

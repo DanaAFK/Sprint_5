@@ -17,10 +17,10 @@ def register_user():
     register_link.click()
 
     name = driver.find_element(By.XPATH, "//label[text()='Имя']/following-sibling::input[@type='text']")
-    name.send_keys("Дана7")
+    name.send_keys("Дана987")
 
     emaill = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
-    emaill.send_keys("fairy7@mail.com")
+    emaill.send_keys("fairy987@mail.com")
 
     password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
     password.send_keys("ILoveMinions098")
@@ -30,6 +30,31 @@ def register_user():
 
     WebDriverWait(driver, 10).until(
         expected_conditions.presence_of_element_located((By.XPATH, "//h2[text()='Вход']"))
+    )
+
+    yield driver
+    driver.quit()
+
+
+@pytest.fixture(scope="function")
+def login_user():
+    driver = webdriver.Chrome()
+    driver.get('https://stellarburgers.nomoreparties.site/')
+
+    login_in_form_button = driver.find_element(By.XPATH, "//button[text()='Войти в аккаунт']")
+    login_in_form_button.click()
+
+    email = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input[@type='text']")
+    email.send_keys("fairy98@mail.com")
+
+    password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
+    password.send_keys("ILoveMinions098")
+
+    login_button = driver.find_element(By.XPATH, "//button[text()='Войти']")
+    login_button.click()
+
+    WebDriverWait(driver, 20).until(
+        expected_conditions.presence_of_element_located((By.XPATH, "//button[text()='Оформить заказ']"))
     )
 
     yield driver
