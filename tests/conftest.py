@@ -17,10 +17,10 @@ def register_user():
     register_link.click()
 
     name = driver.find_element(By.XPATH, "//label[text()='Имя']/following-sibling::input[@type='text']")
-    name.send_keys("Дана987")
+    name.send_keys("Дана97")
 
     emaill = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
-    emaill.send_keys("fairy987@mail.com")
+    emaill.send_keys("fairy97@mail.com")
 
     password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
     password.send_keys("ILoveMinions098")
@@ -41,11 +41,9 @@ def login_user():
     driver = webdriver.Chrome()
     driver.get('https://stellarburgers.nomoreparties.site/')
 
-    login_in_form_button = driver.find_element(By.XPATH, "//button[text()='Войти в аккаунт']")
-    login_in_form_button.click()
 
     email = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input[@type='text']")
-    email.send_keys("fairy98@mail.com")
+    email.send_keys("fairy97@mail.com")
 
     password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
     password.send_keys("ILoveMinions098")
