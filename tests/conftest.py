@@ -48,10 +48,10 @@ def register_and_login_user():
     register_link.click()
 
     name = driver.find_element(By.XPATH, "//label[text()='Имя']/following-sibling::input[@type='text']")
-    name.send_keys("Дана95")
+    name.send_keys("Дана92")
 
     emaill = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
-    emaill.send_keys("fairy95@mail.com")
+    emaill.send_keys("fairy92@mail.com")
 
     password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
     password.send_keys("ILoveMinions098")
@@ -64,7 +64,7 @@ def register_and_login_user():
     )
 
     email = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input[@type='text']")
-    email.send_keys("fairy95@mail.com")
+    email.send_keys("fairy92@mail.com")
 
     password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
     password.send_keys("ILoveMinions098")
