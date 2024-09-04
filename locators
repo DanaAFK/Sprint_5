@@ -1,5 +1,21 @@
 #Регистрация 
-#Имя: //input[@class='text input_textfield text_type_main-default' and @type='text' and @name='name' and not(@value)]
-#Email: //input[@class='text input_textfield text_type_main-default' and @type='text' and @name='name' and @value='_ Событие']
-#Пароль: //input[@class='text input__textfield text_typ_main-default' and @type='password' and @name='Пароль']
+#Имя: By.XPATH, "//label[text()='Имя']/following-sibling::input[@type='text']"
+#Email: By.XPATH, "//label[text()='Email']/following-sibling::input"
+#Пароль: By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']"
 
+#Личный кабинет: By.CSS_SELECTOR, "a[href='/account']"
+#Зарегестрироваться(под формай входа): By.CSS_SELECTOR, "a[href='/register']"
+#Зарегистрироваться: By.XPATH, "//button[text()='Зарегистрироваться']"
+#Заголовок Вход: By.XPATH, "//h2[text()='Вход']"
+#"Некорректный пароль": By.XPATH, "//p[text()='Некорректный пароль']"
+
+#Email формы Вход: By.XPATH, "//label[text()='Email']/following-sibling::input[@type='text']"
+#Пароль формы Вход: By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']"
+#Войти: By.XPATH, "//button[text()='Войти']"
+#Оформить заказ: By.XPATH, "//button[text()='Оформить заказ']"
+#Личный кабинет: By.XPATH, "//p[text()='Личный Кабинет']"
+#Профиль: By.CSS_SELECTOR, "a[href='/account/profile']"
+#Выход: By.XPATH, "//button[contains(., 'Выход')]"
+#Вход: By.XPATH, "//h2[text()='Вход']"
+#Лого: By.XPATH, "//*[name()='svg' and @xmlns='http://www.w3.org/2000/svg']"
+#Собери бургер: By.XPATH, "//h1[text()='Соберите бургер']"

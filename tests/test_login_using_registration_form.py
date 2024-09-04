@@ -9,7 +9,7 @@ def test_login_and_order(register_user):
     driver = register_user
 
     email = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input[@type='text']")
-    email.send_keys("fairy98@mail.com")
+    email.send_keys("fairy_1@mail.com")
 
     password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
     password.send_keys("ILoveMinions098")

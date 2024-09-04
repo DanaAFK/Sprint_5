@@ -14,10 +14,10 @@ register_link = driver.find_element(By.CSS_SELECTOR, "a[href='/register']")
 register_link.click()
 
 name = driver.find_element(By.XPATH, "//label[text()='Имя']/following-sibling::input[@type='text']")
-name.send_keys("Дана5")
+name.send_keys("Дана_4")
 
 email = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
-email.send_keys("fairy5@mail.com")
+email.send_keys("fairy_4@mail.com")
 
 password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
 password.send_keys("I")
