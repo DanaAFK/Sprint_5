@@ -18,3 +18,10 @@ class Locators:
 
     PERSONAL_ACC_BUTTON = "//p[text()='Личный Кабинет']"
     LOGO_BUTTON = "//*[name()='svg' and @xmlns='http://www.w3.org/2000/svg']"
+
+    LOG_OUT_BUTTON = "//button[contains(., 'Выход')]"
+    LOGO_IN_PERSONAL_ACC = "a[href='/account/profile']"
+
+    ACC_BUTTON = "a[href='/account']"
+
+    INVALID_PASSWORD = "//p[text()='Некорректный пароль']"

@@ -3,9 +3,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from locators import Locators
-from data import TestData
 
-class TestConstructorButton:
+
+class TestTopButton:
     @pytest.mark.usefixtures("register_and_login_user")
     def test_constructor_button(self, register_and_login_user):
         driver = register_and_login_user

@@ -1,21 +1,24 @@
 import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
+from locators import Locators
 
-def test_logout_button(register_and_login_user):
-    driver = register_and_login_user
+class TestLogoutButton:
+    @pytest.mark.usefixtures("register_and_login_user")
+    def test_logout_button(self, register_and_login_user):
+        driver = register_and_login_user
 
-    personal_account = driver.find_element(By.XPATH, "//p[text()='Личный Кабинет']")
-    personal_account.click()
+        personal_account = driver.find_element(By.XPATH, Locators.PERSONAL_ACC_BUTTON)
+        personal_account.click()
 
-    logout_button = WebDriverWait(driver, 10).until(
-        expected_conditions.element_to_be_clickable((By.XPATH, "//button[contains(., 'Выход')]"))
-    )
-    logout_button.click()
+        logout_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, Locators.LOG_OUT_BUTTON))
+        )
+        logout_button.click()
 
-    aut_login = WebDriverWait(driver, 2).until(
-        expected_conditions.visibility_of_element_located((By.XPATH, "//h2[text()='Вход']"))
-    )
+        aut_login = WebDriverWait(driver, 2).until(
+            EC.visibility_of_element_located((By.XPATH, Locators.LOGIN_HEADER))
+        )
 
-    assert aut_login.text == 'Вход'
+        assert aut_login.text == 'Вход'

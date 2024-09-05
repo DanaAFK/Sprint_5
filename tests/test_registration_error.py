@@ -1,33 +1,35 @@
-from selenium import webdriver
+import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
+from locators import Locators
+from data import Data
 
-driver = webdriver.Chrome()
-driver.get('https://stellarburgers.nomoreparties.site/')
+class TestRegistration:
+    @pytest.mark.usefixtures("driver")
+    def test_registration_error(self,driver):
+        driver = driver
 
-account_button = driver.find_element(By.CSS_SELECTOR, "a[href='/account']")
-account_button.click()
+        account_button = driver.find_element(By.CSS_SELECTOR, Locators.ACC_BUTTON)
+        account_button.click()
 
-register_link = driver.find_element(By.CSS_SELECTOR, "a[href='/register']")
-register_link.click()
+        register_link = driver.find_element(By.CSS_SELECTOR, Locators.REGISTER_LINK)
+        register_link.click()
 
-name = driver.find_element(By.XPATH, "//label[text()='Имя']/following-sibling::input[@type='text']")
-name.send_keys("Дана_4")
+        name_field = driver.find_element(By.XPATH, Locators.NAME_FIELD)
+        name_field.send_keys(Data.USER_NAME)
 
-email = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
-email.send_keys("fairy_4@mail.com")
+        email_field = driver.find_element(By.XPATH, Locators.EMAIL_FIELD)
+        email_field.send_keys(Data.VALID_EMAIL)
 
-password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
-password.send_keys("I")
+        password = driver.find_element(By.XPATH, Locators.PASSWORD_FIELD)
+        password.send_keys("I")
 
-register_button = driver.find_element(By.XPATH, "//button[text()='Зарегистрироваться']")
-register_button.click()
+        register_button = driver.find_element(By.XPATH, Locators.REGISTER_BUTTON)
+        register_button.click()
 
-error_message = WebDriverWait(driver, 10).until(
-    expected_conditions.presence_of_element_located((By.XPATH, "//p[text()='Некорректный пароль']"))
-)
+        error_message = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.INVALID_PASSWORD))
+        )
 
-assert error_message.text == "Некорректный пароль"
-
-driver.quit()
+        assert error_message.text == "Некорректный пароль"

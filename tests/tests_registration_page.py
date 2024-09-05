@@ -1,36 +1,38 @@
-from selenium import webdriver
+import pytest
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from faker import Faker
+from locators import Locators
+from data import Data
 
-driver = webdriver.Chrome()
-driver.get('https://stellarburgers.nomoreparties.site/')
+fake = Faker()
 
-account_button = driver.find_element(By.CSS_SELECTOR, "a[href='/account']")
-account_button.click()
+class TestRegistration:
+    @pytest.mark.usefixtures("driver")
+    def test_registration_true(self, driver):
+        driver.get(Data.ACCOUNT_URL)
 
-register_link = driver.find_element(By.CSS_SELECTOR, "a[href='/register']")
-register_link.click()
+        driver.find_element(By.CSS_SELECTOR, Locators.REGISTER_LINK).click()
 
-name = driver.find_element(By.XPATH, "//label[text()='Имя']/following-sibling::input[@type='text']")
-name.send_keys("Дана_3")
+        name_field = driver.find_element(By.XPATH, Locators.NAME_FIELD)
+        name_field.send_keys(Data.USER_NAME)
 
-email = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
-email.send_keys("fairy_3@mail.com")
+        email_field = driver.find_element(By.XPATH, Locators.EMAIL_FIELD)
+        generated_email = fake.email()
+        email_field.send_keys(generated_email)
 
-password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
-password.send_keys("ILoveMinions098")
+        password_field = driver.find_element(By.XPATH, Locators.PASSWORD_FIELD)
+        password_field.send_keys(Data.USER_PASSWORD)
 
-register_button = driver.find_element(By.XPATH, "//button[text()='Зарегистрироваться']")
-register_button.click()
+        driver.find_element(By.XPATH, Locators.REGISTER_BUTTON).click()
 
-login_page_header = WebDriverWait(driver, 10).until(
-    expected_conditions.presence_of_element_located((By.XPATH, "//h2[text()='Вход']"))
-)
+        registration = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.LOGIN_HEADER))
+        )
 
-assert login_page_header.text == "Вход"
+        assert registration.text == 'Вход'
 
-driver.quit()
 
 
 
