@@ -8,4 +8,6 @@ class Data:
 
     VALID_EMAIL = 'fairy@mail.com'
     VALID_PASSWORD = '1234567890'
+
     ORDER_BUTTON_TEXT = 'Оформить заказ'
+    ORDER_CONSTRUCTOR_LOGO_TEXT = 'Соберите бургер'

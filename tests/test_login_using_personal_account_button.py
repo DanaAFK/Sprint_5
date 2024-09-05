@@ -10,8 +10,8 @@ class TestLogin:
     def test_login_using_personal_account_button(self, driver):
         driver = driver
 
-        login_in_form_button = driver.find_element(By.XPATH, Locators.GO_TO_ACC)
-        login_in_form_button.click()
+        personal_account_button = driver.find_element(By.XPATH, Locators.PERSONAL_ACC_BUTTON)
+        personal_account_button.click()
 
         email = driver.find_element(By.XPATH, Locators.EMAIL_FIELD)
         email.send_keys(Data.VALID_EMAIL)

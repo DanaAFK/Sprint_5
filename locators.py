@@ -15,3 +15,6 @@ class Locators:
 
     RECOVER_PASSWORD = "a[href='/forgot-password']"
     LOGIN_BUTTON_DOWN = "a[href='/login']"
+
+    PERSONAL_ACC_BUTTON = "//p[text()='Личный Кабинет']"
+    LOGO_BUTTON = "//*[name()='svg' and @xmlns='http://www.w3.org/2000/svg']"
