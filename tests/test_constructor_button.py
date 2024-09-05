@@ -1,22 +1,27 @@
 import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
+from locators import Locators
 
-def test_constructor_button(register_and_login_user):
-    driver = register_and_login_user
 
-    personal_account = driver.find_element(By.XPATH, "//p[text()='Личный Кабинет']")
-    personal_account.click()
+class TestConstructorButton:
+    @pytest.mark.usefixtures("register_and_login_user")
+    def test_constructor_button(self, register_and_login_user):
+        driver = register_and_login_user
 
-    constructor = driver.find_element(By.CSS_SELECTOR, "a[href='/']")
-    constructor.click()
+        personal_account = driver.find_element(By.XPATH, "//p[text()='Личный Кабинет']")
+        personal_account.click()
 
-    logo = WebDriverWait(driver, 2).until(
-        expected_conditions.visibility_of_element_located((By.XPATH, "//h1[text()='Соберите бургер']"))
-    )
+        constructor_button = driver.find_element(By.CSS_SELECTOR, Locators.CONSTRUCTOR_BUTTON)
+        constructor_button.click()
 
-    assert logo.text == 'Соберите бургер'
+        logo = WebDriverWait(driver, 2).until(
+            EC.visibility_of_element_located((By.XPATH, Locators.CONSTRUCTOR_LOGO))
+        )
+
+        assert logo.text == 'Соберите бургер'
+
 
 
 

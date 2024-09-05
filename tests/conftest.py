@@ -2,79 +2,79 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
+from faker import Faker
+from locators import Locators
+from data import Data
 
+fake = Faker()
 
 @pytest.fixture(scope="function")
-def register_user():
+def driver():
     driver = webdriver.Chrome()
-    driver.get('https://stellarburgers.nomoreparties.site/')
-
-    account_button = driver.find_element(By.CSS_SELECTOR, "a[href='/account']")
-    account_button.click()
-
-    register_link = driver.find_element(By.CSS_SELECTOR, "a[href='/register']")
-    register_link.click()
-
-    name = driver.find_element(By.XPATH, "//label[text()='Имя']/following-sibling::input[@type='text']")
-    name.send_keys("Дана_1")
-
-    emaill = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
-    emaill.send_keys("fairy_1@mail.com")
-
-    password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
-    password.send_keys("ILoveMinions098")
-
-    register_button = driver.find_element(By.XPATH, "//button[text()='Зарегистрироваться']")
-    register_button.click()
-
-    WebDriverWait(driver, 10).until(
-        expected_conditions.presence_of_element_located((By.XPATH, "//h2[text()='Вход']"))
-    )
-
+    driver.get(Data.BASE_URL)
     yield driver
+
     driver.quit()
 
-
 @pytest.fixture(scope="function")
-def register_and_login_user():
-    driver = webdriver.Chrome()
-    driver.get('https://stellarburgers.nomoreparties.site/')
+def register_user(driver):
+    driver.get(Data.ACCOUNT_URL)
 
-    account_button = driver.find_element(By.CSS_SELECTOR, "a[href='/account']")
-    account_button.click()
+    driver.find_element(By.CSS_SELECTOR, Locators.REGISTER_LINK).click()
 
-    register_link = driver.find_element(By.CSS_SELECTOR, "a[href='/register']")
-    register_link.click()
+    name_field = driver.find_element(By.XPATH, Locators.NAME_FIELD)
+    name_field.send_keys(Data.USER_NAME)
 
-    name = driver.find_element(By.XPATH, "//label[text()='Имя']/following-sibling::input[@type='text']")
-    name.send_keys("Дана_2")
+    email_field = driver.find_element(By.XPATH, Locators.EMAIL_FIELD)
+    generated_email = fake.email()
+    email_field.send_keys(generated_email)
 
-    emaill = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input")
-    emaill.send_keys("fairy_2@mail.com")
+    password_field = driver.find_element(By.XPATH, Locators.PASSWORD_FIELD)
+    password_field.send_keys(Data.USER_PASSWORD)
 
-    password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
-    password.send_keys("ILoveMinions098")
-
-    register_button = driver.find_element(By.XPATH, "//button[text()='Зарегистрироваться']")
-    register_button.click()
+    driver.find_element(By.XPATH, Locators.REGISTER_BUTTON).click()
 
     WebDriverWait(driver, 10).until(
-        expected_conditions.presence_of_element_located((By.XPATH, "//h2[text()='Вход']"))
+        EC.presence_of_element_located((By.XPATH, Locators.LOGIN_HEADER))
     )
 
-    email = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input[@type='text']")
-    email.send_keys("fairy87@mail.com")
+    yield driver, generated_email
 
-    password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
-    password.send_keys("ILoveMinions098")
 
-    login_button = driver.find_element(By.XPATH, "//button[text()='Войти']")
+@pytest.fixture(scope="function")
+def register_and_login_user(driver):
+    driver.get(Data.ACCOUNT_URL)
+
+    driver.find_element(By.CSS_SELECTOR, Locators.REGISTER_LINK).click()
+
+    name_field = driver.find_element(By.XPATH, Locators.NAME_FIELD)
+    name_field.send_keys(Data.USER_NAME)
+
+    email_field = driver.find_element(By.XPATH, Locators.EMAIL_FIELD)
+    generated_email = fake.email()
+    email_field.send_keys(generated_email)
+
+    password_field = driver.find_element(By.XPATH, Locators.PASSWORD_FIELD)
+    password_field.send_keys(Data.USER_PASSWORD)
+
+    driver.find_element(By.XPATH, Locators.REGISTER_BUTTON).click()
+
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, Locators.LOGIN_HEADER))
+    )
+
+    email_login_field = driver.find_element(By.XPATH, Locators.EMAIL_FIELD)
+    email_login_field.send_keys(generated_email)
+
+    password_login_field = driver.find_element(By.XPATH, Locators.PASSWORD_FIELD)
+    password_login_field.send_keys(Data.USER_PASSWORD)
+
+    login_button = driver.find_element(By.XPATH, Locators.LOGIN_BUTTON)
     login_button.click()
 
     WebDriverWait(driver, 10).until(
-        expected_conditions.presence_of_element_located((By.XPATH, "//button[text()='Оформить заказ']"))
+        EC.presence_of_element_located((By.XPATH, Locators.PLACE_ORDER_BUTTON))
     )
 
     yield driver
-    driver.quit()
