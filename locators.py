@@ -12,3 +12,6 @@ class Locators:
     CONSTRUCTOR_LOGO = "//h1[text()='Соберите бургер']"
 
     GO_TO_ACC = "//button[text()='Войти в аккаунт']"
+
+    RECOVER_PASSWORD = "a[href='/forgot-password']"
+    LOGIN_BUTTON_DOWN = "a[href='/login']"

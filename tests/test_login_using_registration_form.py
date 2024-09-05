@@ -1,25 +1,27 @@
 import pytest
-import selenium
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
+from locators import Locators
+from data import Data
 
+class TestLogin:
+    @pytest.mark.usefixtures("register_user")
+    def test_login_and_order(self, register_user):
+        driver = register_user
 
-def test_login_and_order(register_user):
-    driver = register_user
+        email = driver.find_element(By.XPATH, Locators.EMAIL_FIELD)
+        email.send_keys(Data.VALID_EMAIL)
 
-    email = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input[@type='text']")
-    email.send_keys("fairy_1@mail.com")
+        password_field = driver.find_element(By.XPATH, Locators.PASSWORD_FIELD)
+        password_field.send_keys(Data.VALID_PASSWORD)
 
-    password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
-    password.send_keys("ILoveMinions098")
+        login_button = driver.find_element(By.XPATH, Locators.LOGIN_BUTTON)
+        login_button.click()
 
-    login_button = driver.find_element(By.XPATH, "//button[text()='Войти']")
-    login_button.click()
+        place_in_order_button = WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, Locators.PLACE_ORDER_BUTTON))
+        )
 
-    place_in_order = WebDriverWait(driver, 20).until(
-        expected_conditions.element_to_be_clickable((By.XPATH, "//button[text()='Оформить заказ']"))
-    )
-
-    assert place_in_order.text == "Оформить заказ"
+        assert place_in_order_button.text == Data.ORDER_BUTTON_TEXT
 

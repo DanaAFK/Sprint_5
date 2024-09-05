@@ -39,8 +39,7 @@ def register_user(driver):
         EC.presence_of_element_located((By.XPATH, Locators.LOGIN_HEADER))
     )
 
-    yield driver, generated_email
-
+    yield driver
 
 @pytest.fixture(scope="function")
 def register_and_login_user(driver):
