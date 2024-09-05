@@ -10,3 +10,5 @@ class Locators:
 
     CONSTRUCTOR_BUTTON = "a[href='/']"
     CONSTRUCTOR_LOGO = "//h1[text()='Соберите бургер']"
+
+    GO_TO_ACC = "//button[text()='Войти в аккаунт']"
