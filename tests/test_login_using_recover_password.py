@@ -1,38 +1,38 @@
 import pytest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
+from locators import Locators
+from data import Data
 
-def test_login_using_recover_password():
-    driver = webdriver.Chrome()
-    driver.get('https://stellarburgers.nomoreparties.site/')
+class TestLogin:
+    @pytest.mark.usefixtures("driver")
+    def test_login_using_recover_password(self,driver):
+        driver = driver
 
-    account_button = driver.find_element(By.XPATH, "//button[text()='Войти в аккаунт']")
-    account_button.click()
+        account_button = driver.find_element(By.XPATH, Locators.GO_TO_ACC)
+        account_button.click()
 
-    recover_password_button = driver.find_element(By.CSS_SELECTOR, "a[href='/forgot-password']")
-    recover_password_button.click()
+        recover_password_button = driver.find_element(By.CSS_SELECTOR, Locators.RECOVER_PASSWORD)
+        recover_password_button.click()
 
-    login_button = driver.find_element(By.CSS_SELECTOR, "a[href='/login']")
-    login_button.click()
+        login_button = driver.find_element(By.CSS_SELECTOR, Locators.LOGIN_BUTTON_DOWN)
+        login_button.click()
 
-    email = driver.find_element(By.XPATH, "//label[text()='Email']/following-sibling::input[@type='text']")
-    email.send_keys("fairy98@mail.com")
+        email = driver.find_element(By.XPATH, Locators.EMAIL_FIELD)
+        email.send_keys(Data.VALID_EMAIL)
 
-    password = driver.find_element(By.XPATH, "//label[text()='Пароль']/following-sibling::input[@type='password']")
-    password.send_keys("ILoveMinions098")
+        password_field = driver.find_element(By.XPATH, Locators.PASSWORD_FIELD)
+        password_field.send_keys(Data.VALID_PASSWORD)
 
-    login_button = driver.find_element(By.XPATH, "//button[text()='Войти']")
-    login_button.click()
+        login_button = driver.find_element(By.XPATH, Locators.LOGIN_BUTTON)
+        login_button.click()
 
-    place_in_order = WebDriverWait(driver, 10).until(
-        expected_conditions.element_to_be_clickable((By.XPATH, "//button[text()='Оформить заказ']"))
-    )
+        place_in_order_button = WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, Locators.PLACE_ORDER_BUTTON))
+        )
 
-    assert place_in_order.text == "Оформить заказ"
-
-    driver.quit()
+        assert place_in_order_button.text == Data.ORDER_BUTTON_TEXT
 
 
 

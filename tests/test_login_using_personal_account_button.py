@@ -26,7 +26,6 @@ class TestLogin:
             EC.visibility_of_element_located((By.XPATH, Locators.PLACE_ORDER_BUTTON))
         )
 
-
         assert place_in_order_button.text == Data.ORDER_BUTTON_TEXT
 
 
