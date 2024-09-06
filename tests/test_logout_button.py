@@ -5,7 +5,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from locators import Locators
 
 class TestLogoutButton:
-    @pytest.mark.usefixtures("register_and_login_user")
     def test_logout_button(self, register_and_login_user):
         driver = register_and_login_user
 

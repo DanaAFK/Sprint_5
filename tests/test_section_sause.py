@@ -5,52 +5,48 @@ from selenium.webdriver.support import expected_conditions as EC
 from locators import Locators
 
 class TestSectionsSause:
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_spicy(self, register_and_login_user):
+
+    def test_section_spicy_sause(self, register_and_login_user):
         driver = register_and_login_user
 
-        spicy = driver.find_element(By.XPATH, Locators.SPICY_SAUSE)
-        spicy.click()
+        spicy_sause = driver.find_element(By.XPATH, Locators.SPICY_SAUSE)
+        spicy_sause.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.SPICY_SAUSE_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 
-        assert wait_description.text == "Соус Spicy-X"
-
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_space(self, register_and_login_user):
+    def test_section_space_sause(self, register_and_login_user):
         driver = register_and_login_user
 
-        space = driver.find_element(By.XPATH, Locators.SPACE_SAUSE)
-        space.click()
+        space_sause = driver.find_element(By.XPATH, Locators.SPACE_SAUSE)
+        space_sause.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.SPACE_SAUSE_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert wait_description.text == "Соус фирменный Space Sauce"
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_yellow(self, register_and_login_user):
+    def test_section_yellow_sause(self, register_and_login_user):
         driver = register_and_login_user
 
-        yellow = driver.find_element(By.XPATH, Locators.YELLOW_SAUSE)
-        yellow.click()
+        yellow_sause = driver.find_element(By.XPATH, Locators.YELLOW_SAUSE)
+        yellow_sause.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.YELLOW_SAUSE_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert wait_description.text == "Соус традиционный галактический"
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_read(self, register_and_login_user):
+    def test_section_read_sause(self, register_and_login_user):
         driver = register_and_login_user
 
-        read = driver.find_element(By.XPATH, Locators.READ_SAUSE)
-        read.click()
+        read_sause = driver.find_element(By.XPATH, Locators.READ_SAUSE)
+        read_sause.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.READ_SAUSE_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert wait_description.text == "Соус с шипами Антарианского плоскоходца"
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 

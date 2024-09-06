@@ -6,9 +6,8 @@ from locators import Locators
 from data import Data
 
 class TestPersonalAcc:
-    @pytest.mark.usefixtures("register_user")
     def test_personal_account_open(self, register_user):
-        driver = register_user
+        driver, generated_email = register_user
 
         email_field = driver.find_element(By.XPATH, Locators.EMAIL_FIELD)
         email_field.send_keys(Data.VALID_EMAIL)

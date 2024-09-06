@@ -5,8 +5,23 @@ from selenium.webdriver.support import expected_conditions as EC
 from locators import Locators
 from data import Data
 
+
 class TestTopButton:
-    @pytest.mark.usefixtures("register_and_login_user")
+    def test_constructor_button(self, register_and_login_user):
+        driver = register_and_login_user
+
+        personal_account = driver.find_element(By.XPATH, Locators.PERSONAL_ACC_BUTTON)
+        personal_account.click()
+
+        constructor_button = driver.find_element(By.CSS_SELECTOR, Locators.CONSTRUCTOR_BUTTON)
+        constructor_button.click()
+
+        logo = WebDriverWait(driver, 2).until(
+            EC.visibility_of_element_located((By.XPATH, Locators.CONSTRUCTOR_LOGO))
+        )
+
+        assert logo.text == 'Соберите бургер'
+
     def test_logo_button(self, register_and_login_user):
         driver = register_and_login_user
 
@@ -21,3 +36,13 @@ class TestTopButton:
         )
 
         assert logo.text == Data.ORDER_CONSTRUCTOR_LOGO_TEXT
+
+
+
+
+
+
+
+
+
+

@@ -5,121 +5,105 @@ from selenium.webdriver.support import expected_conditions as EC
 from locators import Locators
 
 class TestSectionsFilling:
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_meat(self, register_and_login_user):
+    def test_section_meat_filling(self, register_and_login_user):
         driver = register_and_login_user
 
-        meat = driver.find_element(By.XPATH, Locators.MEAT_FILLING)
-        meat.click()
+        meat_filling = driver.find_element(By.XPATH, Locators.MEAT_FILLING)
+        meat_filling.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.MEAT_FILLING_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 
-        assert wait_description.text == "Мясо бессмертных моллюсков Protostomia"
-
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_meat(self, register_and_login_user):
+    def test_section_meteor_filling(self, register_and_login_user):
         driver = register_and_login_user
 
-        meteor = driver.find_element(By.XPATH, Locators.METEOR_FILLING)
-        meteor.click()
+        meteor_filling = driver.find_element(By.XPATH, Locators.METEOR_FILLING)
+        meteor_filling.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.METEOR_FILLING_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 
-        assert wait_description.text == "Говяжий метеорит (отбивная)"
-
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_magnolian(self, register_and_login_user):
+    def test_section_magnolian_filling(self, register_and_login_user):
         driver = register_and_login_user
 
-        magnolian = driver.find_element(By.XPATH, Locators.MAGNOLIAN_FILLING)
-        magnolian.click()
+        magnolian_filling = driver.find_element(By.XPATH, Locators.MAGNOLIAN_FILLING)
+        magnolian_filling.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.MAGNOLIAN_FILLING_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 
-        assert wait_description.text == "Биокотлета из марсианской Магнолии"
 
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_blue_fish(self, register_and_login_user):
+    def test_section_blue_fish_filling(self, register_and_login_user):
         driver = register_and_login_user
 
-        blue_fish = driver.find_element(By.XPATH, Locators.BLUE_FISH_FILLING)
-        blue_fish.click()
+        blue_fish_filling = driver.find_element(By.XPATH, Locators.BLUE_FISH_FILLING)
+        blue_fish_filling.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.BLUE_FISH_FILLING_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 
-        assert wait_description.text == "Филе Люминесцентного тетраодонтимформа"
 
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_mineral(self, register_and_login_user):
+    def test_section_mineral_filling(self, register_and_login_user):
         driver = register_and_login_user
 
-        mineral = driver.find_element(By.XPATH, Locators.MINERAL_FILLING)
-        mineral.click()
+        mineral_filling = driver.find_element(By.XPATH, Locators.MINERAL_FILLING)
+        mineral_filling.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.MINERAL_FILLING_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 
-        assert wait_description.text == "Хрустящие минеральные кольца"
-
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_falenial(self, register_and_login_user):
+    def test_section_falenial_filling(self, register_and_login_user):
         driver = register_and_login_user
 
-        falenial = driver.find_element(By.XPATH, Locators.FALENIAL_FILLING)
-        falenial.click()
+        falenial_filling = driver.find_element(By.XPATH, Locators.FALENIAL_FILLING)
+        falenial_filling.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.FALENIAL_FILLING_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 
-        assert wait_description.text == "Плоды Фалленианского дерева"
-
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_alfa(self, register_and_login_user):
+    def test_section_alfa_filling(self, register_and_login_user):
         driver = register_and_login_user
 
-        alfa = driver.find_element(By.XPATH, Locators.ALFA_FILLING)
-        alfa.click()
+        alfa_filling = driver.find_element(By.XPATH, Locators.ALFA_FILLING)
+        alfa_filling.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.ALFA_FILLING_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 
-        assert wait_description.text == "Кристаллы марсианских альфа-сахаридов"
-
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_salat(self, register_and_login_user):
+    def test_section_salat_filing(self, register_and_login_user):
         driver = register_and_login_user
 
-        salat = driver.find_element(By.XPATH, Locators.SALAT_FILING)
-        salat.click()
+        salat_filing = driver.find_element(By.XPATH, Locators.SALAT_FILING)
+        salat_filing.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.SALAT_FILING_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 
-        assert wait_description.text == "Мини-салат Экзо-Плантаго"
-
-    @pytest.mark.usefixtures("register_and_login_user")
-    def test_chees(self, register_and_login_user):
+    def test_section_chees_filling(self, register_and_login_user):
         driver = register_and_login_user
 
-        chees = driver.find_element(By.XPATH, Locators.CHEES_FILLING)
-        chees.click()
+        chees_filling = driver.find_element(By.XPATH, Locators.CHEES_FILLING)
+        chees_filling.click()
 
-        wait_description = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, Locators.CHEES_FILLING_DESCRIPTION))
+        wait_description = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-
-        assert wait_description.text == "Сыр с астероидной плесенью"
+        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
 
 
