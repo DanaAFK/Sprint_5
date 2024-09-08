@@ -29,7 +29,7 @@ class Locators:
     F_BREAD = '//img[@alt="Флюоресцентная булка R2-D3"]'
     K_BREAD = "//img[@alt='Краторная булка N-200i']"
 
-    DESCRIPTION = '//img[@class="Modal_modal__ingImage__2_sz2"]'
+    DESCRIPTION = '//img[@alt="tick animation"]'
 
     SPICY_SAUSE = '//img[@alt="Соус Spicy-X"]'
     SPACE_SAUSE = '//img[@alt="Соус фирменный Space Sauce"]'

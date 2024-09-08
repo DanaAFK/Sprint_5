@@ -14,7 +14,9 @@ class TestSectionsBread:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+
+        assert "tick animation" in wait_description.get_attribute("alt")
+
 
     def test_section_krator_bread(self, register_and_login_user):
         driver = register_and_login_user
@@ -25,7 +27,7 @@ class TestSectionsBread:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
 
 

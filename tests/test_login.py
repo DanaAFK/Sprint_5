@@ -7,8 +7,6 @@ from data import Data
 
 class TestLogin:
     def test_login_using_personal_account_button(self, driver):
-        driver = driver
-
         personal_account_button = driver.find_element(By.XPATH, Locators.PERSONAL_ACC_BUTTON)
         personal_account_button.click()
 
@@ -28,8 +26,6 @@ class TestLogin:
         assert place_in_order_button.text == Data.ORDER_BUTTON_TEXT
 
     def test_login_using_recover_password(self,driver):
-        driver = driver
-
         account_button = driver.find_element(By.XPATH, Locators.GO_TO_ACC)
         account_button.click()
 
@@ -73,7 +69,6 @@ class TestLogin:
         assert place_in_order_button.text == Data.ORDER_BUTTON_TEXT
 
     def test_login_using_the_login_button(self, driver):
-        driver = driver
 
         login_in_form_button = driver.find_element(By.XPATH, Locators.GO_TO_ACC)
         login_in_form_button.click()

@@ -15,7 +15,7 @@ class TestSectionsSause:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
     def test_section_space_sause(self, register_and_login_user):
         driver = register_and_login_user
@@ -26,7 +26,7 @@ class TestSectionsSause:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
     def test_section_yellow_sause(self, register_and_login_user):
         driver = register_and_login_user
@@ -37,7 +37,7 @@ class TestSectionsSause:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
     def test_section_read_sause(self, register_and_login_user):
         driver = register_and_login_user
@@ -48,5 +48,5 @@ class TestSectionsSause:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 

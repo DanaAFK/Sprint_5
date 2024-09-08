@@ -14,7 +14,7 @@ class TestSectionsFilling:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
     def test_section_meteor_filling(self, register_and_login_user):
         driver = register_and_login_user
@@ -25,7 +25,7 @@ class TestSectionsFilling:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
     def test_section_magnolian_filling(self, register_and_login_user):
         driver = register_and_login_user
@@ -36,7 +36,7 @@ class TestSectionsFilling:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
 
     def test_section_blue_fish_filling(self, register_and_login_user):
@@ -48,7 +48,7 @@ class TestSectionsFilling:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
 
     def test_section_mineral_filling(self, register_and_login_user):
@@ -60,7 +60,7 @@ class TestSectionsFilling:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
     def test_section_falenial_filling(self, register_and_login_user):
         driver = register_and_login_user
@@ -71,7 +71,7 @@ class TestSectionsFilling:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
     def test_section_alfa_filling(self, register_and_login_user):
         driver = register_and_login_user
@@ -82,7 +82,7 @@ class TestSectionsFilling:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
     def test_section_salat_filing(self, register_and_login_user):
         driver = register_and_login_user
@@ -93,7 +93,7 @@ class TestSectionsFilling:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
     def test_section_chees_filling(self, register_and_login_user):
         driver = register_and_login_user
@@ -104,6 +104,6 @@ class TestSectionsFilling:
         wait_description = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, Locators.DESCRIPTION))
         )
-        assert "Modal_modal__ingImage__2_sz2" in wait_description.get_attribute("class")
+        assert "tick animation" in wait_description.get_attribute("alt")
 
 
