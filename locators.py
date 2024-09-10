@@ -26,28 +26,14 @@ class Locators:
 
     INVALID_PASSWORD = "//p[text()='Некорректный пароль']"
 
-    F_BREAD = '//img[@alt="Флюоресцентная булка R2-D3"]'
-    K_BREAD = "//img[@alt='Краторная булка N-200i']"
+    INACTIVE_SOUSE = '//div[contains(@class, "tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect") and span[text()="Соусы"]]'
+    ACTIVE_SOUSE = '//div[contains(@class, "tab_tab_type_current__2BEPc") and span[text()="Соусы"]]'
 
-    DESCRIPTION = '//img[@alt="tick animation"]'
+    INACTIVE_FILLING = '//div[contains(@class, "tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect") and span[text()="Начинки"]]'
+    ACTIVE_FILLING = '//div[contains(@class, "tab_tab_type_current__2BEPc") and span[text()="Начинки"]]'
 
-    SPICY_SAUSE = '//img[@alt="Соус Spicy-X"]'
-    SPACE_SAUSE = '//img[@alt="Соус фирменный Space Sauce"]'
-    YELLOW_SAUSE = '//img[@alt="Соус традиционный галактический"]'
-    READ_SAUSE = '//img[@alt="Соус с шипами Антарианского плоскоходца"]'
-
-    MEAT_FILLING = '//img[@alt="Мясо бессмертных моллюсков Protostomia"]'
-    METEOR_FILLING = '//img[@alt="Говяжий метеорит (отбивная)"]'
-    MAGNOLIAN_FILLING = '//img[@alt="Биокотлета из марсианской Магнолии"]'
-    BLUE_FISH_FILLING = '//img[@alt="Филе Люминесцентного тетраодонтимформа"]'
-    MINERAL_FILLING = '//img[@alt="Хрустящие минеральные кольца"]'
-    FALENIAL_FILLING = '//img[@alt="Плоды Фалленианского дерева"]'
-    ALFA_FILLING = '//img[@alt="Кристаллы марсианских альфа-сахаридов"]'
-    SALAT_FILING = '//img[@alt="Мини-салат Экзо-Плантаго"]'
-    CHEES_FILLING = '//img[@alt="Сыр с астероидной плесенью"]'
-
-
-
+    INACTIVE_BREAD = '//div[contains(@class, "tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect") and span[text()="Булки"]]'
+    ACTIVE_BREAD = '//div[contains(@class, "tab_tab_type_current__2BEPc") and span[text()="Булки"]]'
 
 
 
